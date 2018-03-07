@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.example.mmaster.xiaoshixun"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    greendao {
+        schemaVersion 1   //数据库版本号
+        daoPackage 'com.example.mmaster.xiaoshixun.gen'   //自动生成代码的一个位置
+        targetGenDir 'src/main/java'    //自动生成代码的一个位置
+    }
+}
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.android.support:recyclerview-v7:26+'
+    compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
+    implementation 'com.google.code.gson:gson:2.2.4'
+    implementation 'com.squareup.picasso:picasso:2.3.2'
+    compile 'org.greenrobot:greendao:3.2.0'
+}
